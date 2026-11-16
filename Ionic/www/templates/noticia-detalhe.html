@@ -1,0 +1,16 @@
+<ion-view view-title="Detalhe da publicação">
+  <ion-content class="portal-page">
+    <main class="portal-container detail-container" ng-if="vm.item" aria-labelledby="detail-title">
+      <button class="button button-clear portal-link back-link" ui-sref="app.home">← Voltar ao mural</button>
+      <article class="portal-card detail-card">
+        <img class="detail-image" ng-src="{{ vm.item.image }}" alt="Ilustração da publicação: {{ vm.item.title }}">
+        <div class="detail-content">
+          <span class="type-badge" ng-class="{'event-badge': vm.item.category === 'Evento'}">{{ vm.item.category }}</span>
+          <span class="news-date">{{ vm.item.date }}</span>
+          <h1 id="detail-title">{{ vm.item.title }}</h1>
+          <p>{{ vm.item.content }}</p>
+        </div>
+      </article>
+    </main>
+  </ion-content>
+</ion-view>

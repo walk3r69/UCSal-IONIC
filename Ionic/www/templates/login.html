@@ -1,0 +1,26 @@
+<ion-view view-title="Acesso ao portal" class="login-view">
+  <ion-content class="login-page">
+    <main class="login-shell" aria-labelledby="login-title">
+      <section class="login-intro">
+        <img class="ucsal-logo ucsal-logo-login" src="img/ucsal_logo.png" alt="Universidade Católica do Salvador">
+        <p class="eyebrow">PORTAL DO ALUNO</p>
+        <h1 id="login-title">Sua vida<br><em>acadêmica.</em></h1>
+        <p>Consulte comunicados, atualize seus dados e acompanhe suas informações financeiras em um só lugar.</p>
+      </section>
+
+      <section class="login-card portal-card">
+        <p class="eyebrow">ACESSO RESTRITO</p>
+        <h2>Entrar no portal</h2>
+        <form name="loginForm" novalidate ng-submit="vm.submit(loginForm)">
+          <label class="field-label" for="registration">Matrícula</label>
+          <input id="registration" class="portal-input" type="text" name="registration" ng-model="vm.credentials.registration" placeholder="Digite sua matrícula" required>
+          <label class="field-label" for="password">Senha</label>
+          <input id="password" class="portal-input" type="password" name="password" ng-model="vm.credentials.password" placeholder="Digite sua senha" required>
+          <p class="form-error" role="alert" ng-if="vm.errorMessage">{{ vm.errorMessage }}</p>
+          <button class="button button-block portal-button" type="submit">Acessar <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="demo-hint"><strong>Acesso de demonstração</strong><br>Matrícula: 200029941 &nbsp;|&nbsp; Senha: 123456</p>
+      </section>
+    </main>
+  </ion-content>
+</ion-view>

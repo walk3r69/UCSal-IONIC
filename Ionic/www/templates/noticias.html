@@ -1,0 +1,48 @@
+<ion-view view-title="Mural de notícias">
+  <ion-content class="portal-page">
+    <main class="portal-container" aria-labelledby="home-title">
+      <section class="portal-hero portal-dashboard-hero">
+        <div class="hero-copy">
+          <img class="ucsal-logo ucsal-logo-hero" src="img/ucsal_logo.png" alt="Universidade Católica do Salvador">
+          <p class="eyebrow">MURAL DO ALUNO</p>
+          <h1 id="home-title">Informação para<br><em>seguir em frente.</em></h1>
+          <p>Olá, {{ vm.firstName }}. Acompanhe comunicados e atividades acadêmicas em um só lugar.</p>
+        </div>
+        <div class="portal-hero-summary">
+          <span class="summary-line" aria-hidden="true"></span>
+          <p class="eyebrow">ÁREA PRINCIPAL</p>
+          <strong>Notícias<br>e eventos</strong>
+          <span>Conteúdo demonstrativo</span>
+        </div>
+      </section>
+
+      <section class="portal-toolbar" aria-label="Filtro de publicações">
+        <div>
+          <p class="eyebrow">COMUNICADOS</p>
+          <h2>Atualizações da universidade</h2>
+        </div>
+        <label class="select-field" for="category-filter">
+          <span>Filtrar por categoria</span>
+          <select id="category-filter" ng-model="vm.selectedCategory" ng-change="vm.setCategory()" ng-options="category for category in vm.categories"></select>
+        </label>
+      </section>
+
+      <section class="news-grid" aria-live="polite">
+        <article class="news-card portal-card" ng-repeat="item in vm.items | filter:vm.categoryFilter track by item.id">
+          <div class="news-image">
+            <img ng-src="{{ item.image }}" alt="Ilustração da publicação: {{ item.title }}">
+            <span class="type-badge" ng-class="{'event-badge': item.category === 'Evento'}">{{ item.category }}</span>
+          </div>
+          <div class="news-card-content">
+            <span class="news-date">{{ item.date }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.summary }}</p>
+            <button class="button button-clear portal-link" ng-click="vm.readMore(item)">Ler mais <span aria-hidden="true">↗</span></button>
+          </div>
+        </article>
+      </section>
+
+      <p class="empty-state" ng-if="!(vm.items | filter:vm.categoryFilter).length">Nenhuma publicação encontrada para este filtro.</p>
+    </main>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view view-title="Consulta financeira">
+  <ion-content class="portal-page">
+    <main class="portal-container" aria-labelledby="finance-title">
+      <section class="page-intro finance-intro">
+        <div>
+          <p class="eyebrow">ORGANIZAÇÃO FINANCEIRA</p>
+          <h1 id="finance-title">Mensalidades</h1>
+          <p>Consulte as parcelas mockadas por semestre e copie a linha digitável quando necessário.</p>
+        </div>
+        <label class="select-field" for="semester-filter">
+          <span>Semestre letivo</span>
+          <select id="semester-filter" ng-model="vm.selectedSemester" ng-change="vm.loadInvoices()" ng-options="semester for semester in vm.semesters"></select>
+        </label>
+      </section>
+
+      <section class="invoice-list" aria-live="polite">
+        <article class="invoice-card portal-card" ng-repeat="invoice in vm.invoices track by invoice.month">
+          <div>
+            <span class="news-date">{{ invoice.month }}</span>
+            <h2>Vencimento em {{ invoice.dueDate }}</h2>
+            <p>Parcela do semestre {{ vm.selectedSemester }}</p>
+          </div>
+          <div class="invoice-side">
+            <strong>{{ invoice.amount | currency:'R$ ':2 }}</strong>
+            <span class="status-badge" ng-class="{'status-paid': invoice.status === 'Paga', 'status-pending': invoice.status === 'A Pagar'}">{{ invoice.status | statusLabel }}</span>
+            <button class="button button-small portal-outline-button" ng-if="invoice.status === 'A Pagar'" ng-click="vm.copyBarcode(invoice)">Copiar código de barras</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </ion-content>
+</ion-view>

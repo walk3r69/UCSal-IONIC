@@ -1,0 +1,10 @@
+{
+  "name": "portal-aluno-ucsal-ionic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MVP front-end do Portal do Aluno UCSal com Ionic Framework e AngularJS, usando dados mockados.",
+  "scripts": {
+    "start": "node serve.js",
+    "serve": "node serve.js"
+  }
+}

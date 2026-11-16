@@ -1,0 +1,54 @@
+<ion-side-menus enable-menu-with-back-views="false" class="portal-shell">
+  <ion-side-menu-content class="portal-shell-content">
+    <div class="portal-top-strip" role="banner">
+      <span>PORTAL DO ALUNO</span>
+      <span class="top-course">{{ menu.user.course }}</span>
+      <span class="top-user"><i class="icon ion-person" aria-hidden="true"></i> {{ menu.user.fullName }}</span>
+    </div>
+
+    <ion-nav-bar class="bar portal-navbar">
+      <ion-nav-back-button class="button-clear"></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" aria-label="Abrir menu"></button>
+      </ion-nav-buttons>
+      <ion-nav-title>
+        <span class="nav-title-text">PORTAL DO ALUNO</span>
+      </ion-nav-title>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-person" ui-sref="app.profile" aria-label="Abrir atualização cadastral"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="282" class="portal-side-menu">
+    <ion-content>
+      <div class="side-menu-header">
+        <img class="ucsal-logo ucsal-logo-menu" src="img/ucsal_logo.png" alt="Universidade Católica do Salvador">
+        <p class="eyebrow">PORTAL DO ALUNO</p>
+        <div class="side-user">
+          <span class="profile-avatar">JH</span>
+          <div>
+            <strong>{{ menu.user.fullName }}</strong>
+            <span>{{ menu.user.course }}</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="side-navigation" aria-label="Menu principal">
+        <p class="menu-caption">ACESSOS DO PORTAL</p>
+        <a class="menu-item" menu-close ui-sref="app.home" ui-sref-active="is-selected">
+          <i class="icon ion-monitor" aria-hidden="true"></i><span>Mural de notícias</span>
+        </a>
+        <a class="menu-item" menu-close ui-sref="app.profile" ui-sref-active="is-selected">
+          <i class="icon ion-person" aria-hidden="true"></i><span>Atualização cadastral</span>
+        </a>
+        <a class="menu-item" menu-close ui-sref="app.finance" ui-sref-active="is-selected">
+          <i class="icon ion-card" aria-hidden="true"></i><span>Consulta financeira</span>
+        </a>
+      </nav>
+
+      <button class="menu-logout" ng-click="menu.logout()"><i class="icon ion-log-out" aria-hidden="true"></i> Sair</button>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
